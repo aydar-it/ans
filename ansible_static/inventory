@@ -1,0 +1,5 @@
+[nginx]
+host_1 ansible_host=192.168.0.113
+
+[psql]
+host_2 ansible_host=192.168.0.83

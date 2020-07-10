@@ -1,0 +1,47 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "ubuntu/trusty64"
+
+  config.vm.box_check_update = false
+
+  config.vm.network "public_network"
+
+  config.vm.synced_folder "shared_data", "/shared_data"
+
+  config.vm.define "nginxtest" do |nt|
+    nt.vm.hostname = "nginxtest"
+    nt.vm.network "forwarded_port", guest: 80, host: 6080
+  end
+
+  config.vm.define "nginxprod" do |np|
+    np.vm.hostname = "nginxprod"
+    np.vm.network "forwarded_port", guest: 80, host: 8080
+  end
+
+  config.vm.define "psqltest" do |dbt|
+    dbt.vm.hostname = "psqltest"
+  end
+
+  config.vm.define "psqlprod" do |dbp|
+    dbp.vm.hostname = "psqlprod"
+  end
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = false
+    vb.memory = "512"
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.groups = {
+      "test" => ["nginxtest", "psqltest"],
+      "prod" => ["nginxprod", "psqlprod"],
+      "psql" => ["psqlprod", "psqltest,"],
+      "nginx" => ["nginxprod", "nginxtest"]
+    }
+    ansible.playbook = "provisioning/playbook.yml"
+  end
+
+end

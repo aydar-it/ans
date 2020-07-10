@@ -1,0 +1,7 @@
+2020-07-10 02:05:18,801 p=19605 u=swedde |  PLAY [NGINX inst.] ***************************************************************************************************************************
+2020-07-10 02:05:18,817 p=19605 u=swedde |  TASK [Gathering Facts] ***********************************************************************************************************************
+2020-07-10 02:05:19,300 p=19605 u=swedde |  fatal: [host_1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: 1vagrant@192.168.0.113: Permission denied (publickey,password).\r\n", "unreachable": true}
+2020-07-10 02:05:19,303 p=19605 u=swedde |  	to retry, use: --limit @/home/swedde/Desktop/ansible_static/playbooks/playbook.retry
+
+2020-07-10 02:05:19,303 p=19605 u=swedde |  PLAY RECAP ***********************************************************************************************************************************
+2020-07-10 02:05:19,303 p=19605 u=swedde |  host_1                     : ok=0    changed=0    unreachable=1    failed=0   

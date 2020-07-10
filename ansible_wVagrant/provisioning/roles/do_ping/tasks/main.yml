@@ -1,0 +1,4 @@
+---
+# tasks file for do_ping
+- name: Do ping
+  ping:

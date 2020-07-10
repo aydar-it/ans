@@ -1,0 +1,1 @@
+{"virtualbox":{"/shared_data":{"guestpath":"/shared_data","hostpath":"/home/swedde/Desktop/ansible_v1/shared_data","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/swedde/Desktop/ansible_v1","disabled":false,"__vagrantfile":true}}}

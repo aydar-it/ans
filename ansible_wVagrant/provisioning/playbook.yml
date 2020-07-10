@@ -1,0 +1,25 @@
+---
+- name: Ping all
+  hosts: all
+  roles: 
+          - do_ping
+
+- name: PostgreSQL installation
+  hosts: psql
+  become: yes
+  tasks:
+          - name: Do installing PostgreSQL
+            apt:
+                    name: postgresql
+                    state: latest
+
+- name: NGINX inst.
+  hosts: nginx
+  become: yes
+  roles:
+          - deploy_nginx
+
+- name: Ping only psqltest
+  hosts: psqltest
+  roles:
+          - do_ping

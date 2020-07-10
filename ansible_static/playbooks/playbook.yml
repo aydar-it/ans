@@ -1,0 +1,24 @@
+---
+- name: NGINX inst.
+  hosts: nginx
+  become: yes
+  tasks:
+          - name: Do installing NGINX
+            apt:
+                    name: nginx
+                    state: latest
+                    
+          - name: Start and enable NGINX
+            service:
+                    name: nginx
+                    state: started
+                    enabled: yes
+- name: PostgreSQL installation
+  hosts: psql
+  become: yes
+  tasks:
+          - name: Do installing PostgreSQL
+            apt:
+                    name: postgresql
+                    state: latest
+
